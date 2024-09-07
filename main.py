@@ -106,4 +106,14 @@ while True:
             pyautogui.click()
             time.sleep(1)
 
+    # Check for Continue button on Performance screen or other screens
+    if click_button(continue_template):
+        print("Continue button clicked!")
+        time.sleep(1)
+    else:
+        # Move to the fixed position for the Performance screen and click
+        pyautogui.moveTo(1750, 1005, duration=0.1)
+        pyautogui.click()
+        time.sleep(1)
+
     time.sleep(1)
