@@ -11,16 +11,17 @@ pyautogui.FAILSAFE = False
 
 # Set the path for Tesseract
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-
+# Variables to count games and experience
+# Variables to count games and experience
+games_played = 0
+base_experience = 100  # Base EXP for each game
 # Load template images
 continue_template = cv2.imread('continue_button.png', cv2.IMREAD_GRAYSCALE)
 change_position_template = cv2.imread('change_position.png', cv2.IMREAD_GRAYSCALE)
 keeper_template = cv2.imread('keeper.png', cv2.IMREAD_GRAYSCALE)
 next_item_template = cv2.imread('next_item.png', cv2.IMREAD_GRAYSCALE)
 
-# Variables to count games and experience
-games_played = 0
-experience_points = 0
+
 
 def capture_screen():
     screenshot = pyautogui.screenshot()
@@ -71,6 +72,9 @@ while True:
     if check_text_on_screen("Play Again"):
         pyautogui.press("space")
         time.sleep(1)
+        games_played += 1
+        experience_points = games_played * base_experience
+        print(f"Games played: {games_played}, EXP: {experience_points}")
         
         change_position_found = False
         while not change_position_found:
@@ -82,9 +86,7 @@ while True:
             else:
                 time.sleep(3)
         
-        games_played += 1
-        experience_points += 100
-        print(f"Games played: {games_played}, EXP: {experience_points}")
+
 
     # Check for "Next Item" button
     if click_button(next_item_template):
@@ -116,4 +118,5 @@ while True:
         pyautogui.click()
         time.sleep(1)
 
+        
     time.sleep(1)
