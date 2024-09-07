@@ -72,10 +72,7 @@ while True:
     if check_text_on_screen("Play Again"):
         pyautogui.press("space")
         time.sleep(1)
-        games_played += 1
-        experience_points = games_played * base_experience
-        print(f"Games played: {games_played}, EXP: {experience_points}")
-        
+
         change_position_found = False
         while not change_position_found:
             if click_button(change_position_template):
@@ -83,6 +80,10 @@ while True:
                 pyautogui.press("3")
                 change_position_found = True
                 time.sleep(1)
+                games_played += 1
+                experience_points = games_played * base_experience
+                print(f"Games played: {games_played}, EXP: {experience_points}")
+        
             else:
                 time.sleep(3)
         
