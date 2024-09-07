@@ -92,7 +92,7 @@ while True:
     else:
         # If "Next Item" button is not detected, move to direct coordinate click
         if check_text_on_screen("Next Item"):
-            pyautogui.moveTo(1470, 750, duration=0.1)
+            pyautogui.moveTo(1470, 750, duration=0.1) #SET Next item button here
             pyautogui.click()
             time.sleep(1)
 
@@ -102,7 +102,7 @@ while True:
     else:
         # If Continue button is not detected, move to direct coordinate click
         if check_text_on_screen("Continue"):
-            pyautogui.moveTo(1750, 1005, duration=0.1)
+            pyautogui.moveTo(1750, 1005, duration=0.1)#SET Continue button here
             pyautogui.click()
             time.sleep(1)
 
